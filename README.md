@@ -21,3 +21,7 @@ Run `npm run  build` to build the project. The build artifacts will be stored in
 ## Start 
 
 Run `npm run start` after build the project.  Navigate to `http://localhost:3200/`.
+
+
+## Live Demo 
+[Demo](https://front-angular-production-9661.up.railway.app/)
