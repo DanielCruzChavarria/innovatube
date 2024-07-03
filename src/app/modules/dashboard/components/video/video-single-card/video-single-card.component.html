@@ -1,0 +1,24 @@
+<!-- Card -->
+<div class="flex h-[420px] flex-col rounded-lg bg-background p-5">
+ <!-- Image -->
+ <div [ngStyle]="{ 'background-image': 'url(' + video.snippet.thumbnails.high.url + ')' }"
+  class="h-[240px]  rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+ </div>
+ <!-- Description  -->
+ <h2 class="text-md mt-6 font-semibold text-foreground">{{ video.snippet.title }} </h2>
+ <div class="dflex items-end justify-between text-sm font-semibold text-muted-foreground">
+  <!-- <span>{{ nft.price | currency }}</span> -->
+ </div>
+ <!-- Buttons -->
+ <div class="mt-6 flex items-center justify-between">
+  <div [ngClass]="{ 'text-primary' :! video.isFavorite,  'text-destructive': video.isFavorite}" (click)="toggleFavorite()"
+   class="hover:cursor-pointer  m-2 fillPrimary">
+   <svg-icon src="assets/icons/heroicons/outline/hearth.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
+  </div>
+  <span (click)="playVideo()"
+   class="cursor-pointer text-muted-foreground transition-colors duration-150 ease-in-out hover:text-primary">
+   <svg-icon [src]="'assets/icons/heroicons/outline/play.svg'" [svgClass]="'h-5 w-5'"></svg-icon>
+  </span>
+ </div>
+</div>
+<!-- end Card -->

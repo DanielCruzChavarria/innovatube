@@ -1,0 +1,27 @@
+<div class="flex h-screen w-screen">
+ <div class="auth-bg hidden flex-1 items-center justify-center bg-primary bg-cover lg:flex">
+  <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+   <img src="assets/logo.png" class="mx-auto" alt="dashboard widget" />
+   <h1 class="text-4xl font-bold">"Conéctate, Descubre, Innova"</h1>
+
+   <p class="text-md font-light">¡Únete a InnovaTube y revoluciona tu experiencia en YouTube! Descubre contenido
+    increíble, guarda tus videos
+    favoritos y mantente siempre conectado con lo mejor del entretenimiento. Regístrate ahora y comienza a explorar un
+    mundo de posibilidades.</p>
+  </div>
+ </div>
+ <div class="flex flex-1 items-center justify-center bg-background">
+  <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+   <!-- logo -->
+   <div class="flex items-center justify-center hover:cursor-pointer" routerLink="/dashboard">
+    <a class="rounded  p-2">
+     <img src="assets/logo.png " class="text-white" alt="Logo"
+      class=" rounded h-6 w-6 cursor-pointer object-cover transition-all duration-300" />
+    </a>
+    <b class="text-md pl-3 font-bold text-foreground"> Innovatube</b>
+   </div>
+   <!-- Route -->
+   <router-outlet></router-outlet>
+  </div>
+ </div>
+</div>

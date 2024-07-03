@@ -1,0 +1,18 @@
+.video-list-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+
+
+.video-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-actions {
+  display: flex;
+  justify-content: flex-end;
+}

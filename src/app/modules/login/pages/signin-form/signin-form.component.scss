@@ -1,0 +1,12 @@
+re-captcha.is-invalid > div {
+  border: 1px solid #dc3545 !important;
+  border-radius: 0.2rem;
+}
+
+.is__invalid-input {
+  border-color: #e11d48;
+}
+
+.is__invalid-error {
+  color: #e11d48;
+}

@@ -1,0 +1,33 @@
+<div class="flex-col rounded-lg bg-background px-8 py-8 sm:flex-row">
+ <div class="mb-4 flex items-center justify-between">
+   <div class="flex-col items-center">
+     <h3 class="text-md font-bold text-foreground">Videos Favoritos</h3>
+   </div>
+
+ </div>
+
+ <div class="relative overflow-x-auto">
+   <table class="w-full table-auto">
+     <!--Table head-->
+     <thead class="text-xs uppercase text-muted-foreground">
+       <tr>
+         <th class="py-3 text-left">Image</th>
+         <th class="py-3 text-left">Title</th>
+         <th class="py-3 text-left">Fecha Añadida</th>
+         <th class="py-3 text-left">Link</th>
+         <th class="py-3 text-left">Acciones</th>
+       </tr>
+     </thead>
+     <!--end Table head-->
+     <!--Table body-->
+     <tbody>
+       <tr
+         *ngFor="let favorite of favorites"
+         [favorite]="favorite"
+         video-table-item
+         class="border-b border-dashed border-border hover:bg-card"></tr>
+     </tbody>
+     <!--end::Table body-->
+   </table>
+ </div>
+</div>

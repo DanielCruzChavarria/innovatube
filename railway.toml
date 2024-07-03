@@ -1,0 +1,9 @@
+[project]
+name = "client"
+
+[services]
+  [services.default]
+  name = "client"
+  start = "sh -c 'node /usr/src/server/src/index.js & nginx -g 'daemon off;''"
+  build = { context = ".", dockerfile = "Dockerfile" }
+  envs = { PORT = "8080" }

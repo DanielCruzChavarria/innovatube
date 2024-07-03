@@ -1,0 +1,160 @@
+<form class="my-10 space-y-6" [formGroup]="userForm" (ngSubmit)="saveUser(userForm)">
+ <div class="text-center">
+  <h2 class="mb-1 text-3xl font-semibold text-foreground">Regístrate</h2>
+  <p class="text-sm text-muted-foreground">
+   <span class="text-primary">¡</span>Descubre y guarda tus videos favoritos de manera sencilla y organizada<span
+    class="text-primary">!</span>
+  </p>
+ </div>
+
+ <div class="space-y-3 text-left">
+  <!-- NAME -->
+  <div class="relative">
+   <input type="text" id="name" [ngClass]="{ 'is__invalid-input': submitted && f['name'].errors }" class="peer block"
+    placeholder=" " formControlName="name" />
+   <label for="name"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Nombre(s)
+   </label>
+  </div>
+  <div *ngIf="submitted && f['name'].errors" class="flex flex-col">
+   <span *ngIf="f['name'].hasError('required')" class="text-xs text-muted-foreground"> El nombre es requerido.</span>
+  </div>
+
+
+  <!-- LASTNAME -->
+  <div class="relative">
+   <input type="text" id="lastName" [ngClass]="{ 'is__invalid-input': submitted && f['lastName'].errors }"
+    class="peer block" placeholder=" " formControlName="lastName" />
+   <label for="lastName"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Apellido(s)
+   </label>
+  </div>
+  <div *ngIf="submitted && f['lastName'].errors" class="flex flex-col">
+   <span *ngIf="f['lastName'].hasError('required')" class="text-xs text-muted-foreground"> El Apellido es
+    requerido</span>
+
+  </div>
+
+  <!-- USERNAME -->
+  <div class="relative">
+   <input type="text" id="username" [ngClass]="{ 'is__invalid-input': submitted && f['username'].errors }"
+    class="peer block" placeholder=" " formControlName="username" />
+   <label for="username"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Nombre de usuario
+   </label>
+  </div>
+  <div *ngIf="submitted && f['username'].errors" class="flex flex-col">
+   <span *ngIf="f['username'].hasError('required')" class="text-xs text-muted-foreground"> El nombre de usuario es
+    requerido.</span>
+   <span *ngIf="f['username'].hasError('alreadyExists')" class="text-xs text-muted-foreground"> El nombre de usuario ya
+    existe.</span>
+   <span *ngIf="f['username'].hasError('minLength')" class="text-xs text-muted-foreground"> El nombre de usuario debe
+    ser de por lo menos 5
+    caracteres.</span>
+  </div>
+
+
+  <!-- EMAIL -->
+  <div class="relative">
+   <input type="text" id="email" [ngClass]="{ 'is__invalid-input': submitted && f['email'].errors }" class="peer block"
+    placeholder=" " formControlName="email" autocomplete="email" />
+   <label for="email"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Email
+   </label>
+  </div>
+  <div *ngIf="submitted && f['email'].errors" class="flex flex-col">
+   <span *ngIf="f['email'].hasError('required')" class="text-xs text-muted-foreground"> El Email es requerido.</span>
+   <span *ngIf="f['email'].hasError('alreadyExists')" class="text-xs text-muted-foreground"> El Email ya existe.</span>
+   <span *ngIf="f['email'].hasError('email')" class="text-xs text-muted-foreground"> El Email no es valido.</span>
+
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="relative">
+   <input [type]="passwordVisible ? 'text' : 'password'" id="password" formControlName="password"
+    [ngClass]="{ 'is__invalid-input': submitted && f['password'].errors }" class="peer block" placeholder=" "
+    autocomplete="new-password" />
+   <label for="password"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Contraseña
+   </label>
+   <span class="absolute top-2.5 right-5 cursor-pointer text-muted-foreground" (click)="togglePasswordVisibility()">
+    <svg-icon [src]="
+    !passwordVisible
+      ? 'assets/icons/heroicons/outline/eye-off.svg'
+      : 'assets/icons/heroicons/outline/eye.svg'
+  " [svgClass]="'h-5 w-5'">
+    </svg-icon>
+   </span>
+
+  </div>
+  <div *ngIf="submitted && f['password'].errors" class="flex flex-col">
+   <span *ngIf="f['password'].hasError('required')" class=" text-xs text-muted-foreground">La contraseña es
+    requerida.</span>
+   <span *ngIf="f['password'].hasError('minLength')" class="text-xs text-muted-foreground">La contraseña debe ser de por
+    lo menos 8
+    caracteres.</span>
+   <span *ngIf="f['password'].hasError('number')" class="text-xs text-muted-foreground">Se require al menos un
+    número.</span>
+   <span *ngIf="f['password'].hasError('upper')" class="text-xs text-muted-foreground">Se require al menos una
+    mayúscula.</span>
+   <span *ngIf="f['password'].hasError('lower')" class="text-xs text-muted-foreground">Se require al menos una
+    minúscula.</span>
+  </div>
+
+  <!-- CONFIRM PASSWORD -->
+  <div class="relative">
+   <input type="password" id="confirm-password" [ngClass]="{ 'is__invalid-input': submitted && f['confirmPassword'].errors }"
+    class="peer block" placeholder=" " formControlName="confirmPassword" autocomplete="new-password" />
+   <label for="confirm-password"
+    class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">
+    Confirma tu contraseña
+   </label>
+  </div>
+  <div *ngIf="submitted && f['confirmPassword'].errors" class="flex flex-col">
+   <span *ngIf="f['confirmPassword'].hasError('required')" class="text-xs text-muted-foreground">Confirma tu
+    contraseña.</span>
+   <span *ngIf="f['confirmPassword'].hasError('confirmedValidator')" class="text-xs text-muted-foreground">No coinciden
+    las contraseñas.</span>
+
+  </div>
+  <div class="flex items-center justify-between space-x-3">
+   <div class="flex items-center gap-1" >
+    <re-captcha  (resolved)="handleRecaptchaResolved($event)"  id="token" name="token"></re-captcha>
+   </div>
+   <div *ngIf="submitted && f['token'].errors" class="flex flex-col">
+    <span *ngIf="f['token'].hasError('required')" class="text-xs text-muted-foreground">
+     Porfavor, complete este campo.
+    </span>
+
+   </div>
+  </div>
+
+  <!-- reCAPTCHA -->
+
+ </div>
+
+
+
+ <!-- Submit Button -->
+ <div>
+  <!-- <app-button full impact="bold" tone="primary" shape="rounded" size="medium">Sign up</app-button> -->
+  <button type="submit"
+   class="flex-none w-full rounded-md bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground hover:text-foreground">
+   Registrarse
+  </button>
+ </div>
+
+ <!-- Sign-up -->
+ <div class="flex items-center text-sm text-muted-foreground">
+  ¿Ya tienes una cuenta?
+  <button routerLink="/auth/login"
+   class="flex-none rounded-md  bg-primary px-4 py-2.5 ml-5 text-xs font-semibold text-primary-foreground">
+   Iniciar sesión
+  </button>
+ </div>
+</form>

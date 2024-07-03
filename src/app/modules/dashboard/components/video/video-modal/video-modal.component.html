@@ -1,0 +1,6 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" (click)="closeModal()">
+ <div class="relative bg-white rounded-lg p-4 max-w-full max-h-full overflow-auto" (click)="$event.stopPropagation()">
+  <span class="absolute top-2 right-2 cursor-pointer text-2xl" (click)="closeModal()">×</span>
+  <div [innerHTML]="sanitizedEmbedHtml"></div>
+ </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+ <!-- Header -->
+ <div class="mb-4 flex justify-between">
+  <div class="inline-block">
+   <h3 class="font-semibold text-foreground">Videos</h3>
+   <!-- <div class="space-x-1 text-xs font-medium text-muted-foreground">
+    <a href="" class="hover:text-primary">Dashboards</a>
+    <span> - Videos</span>
+   </div> -->
+  </div>
+  <div class="inline-block space-x-4">
+   <input type="text" placeholder="Search for videos..." [(ngModel)]="query" (ngModelChange)="searchVideos($event)"
+    class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary" />
+  </div>
+ </div>
+ <!-- end Header -->
+
+ <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+
+  <!-- Single Card -->
+  <div *ngFor="let video of videos">
+   <div video-single-card [video]="video"></div>
+  </div>
+  <!-- end Single Card -->
+
+ </div>
+</div>
